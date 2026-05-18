@@ -1,5 +1,5 @@
 from fastapi import FastAPI, HTTPException
-from fastapi.responses import HTMLResponse
+from fastapi.responses import HTMLResponse, FileResponse
 from fastapi.middleware.cors import CORSMiddleware
 from pydantic import BaseModel, Field, field_validator
 from contextlib import asynccontextmanager
@@ -216,6 +216,13 @@ async def get_ui():
     try:
         with open(ui_path, "r", encoding="utf-8") as f: return f.read()
     except Exception as e: return f"<html><body><h1>UI File Not Found</h1><p>{e}</p></body></html>"
+
+@app.get("/favicon.png")
+async def get_favicon():
+    favicon_path = os.path.join(os.path.dirname(__file__), "..", "public", "favicon.png")
+    if os.path.exists(favicon_path):
+        return FileResponse(favicon_path)
+    raise HTTPException(status_code=404, detail="Favicon not found")
 
 @app.post("/api/traffic/reroute")
 async def traffic_reroute():

@@ -12,7 +12,7 @@ def write_json(filename, data):
         json.dump(data, f, indent=2)
 
 def hit_endpoint(endpoint):
-    req = urllib.request.Request(f"http://127.0.0.1:8000{endpoint}", method="POST")
+    req = urllib.request.Request(f"http://127.0.0.1:8080{endpoint}", method="POST")
     try:
         with urllib.request.urlopen(req) as response:
             pass
