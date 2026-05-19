@@ -1,0 +1,250 @@
+@import "tailwindcss";
+@import "tw-animate-css";
+
+@custom-variant dark (&:is(.dark *));
+
+@theme inline {
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --color-chart-1: var(--chart-1);
+  --color-chart-2: var(--chart-2);
+  --color-chart-3: var(--chart-3);
+  --color-chart-4: var(--chart-4);
+  --color-chart-5: var(--chart-5);
+  --color-sidebar: var(--sidebar);
+  --color-sidebar-foreground: var(--sidebar-foreground);
+  --color-sidebar-primary: var(--sidebar-primary);
+  --color-sidebar-primary-foreground: var(--sidebar-primary-foreground);
+  --color-sidebar-accent: var(--sidebar-accent);
+  --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
+  --color-sidebar-border: var(--sidebar-border);
+  --color-sidebar-ring: var(--sidebar-ring);
+}
+
+:root {
+  /* AETHER Neo-Operational Intelligence Design System */
+  /* Deep Navy Base - Authoritative, reduces eye strain */
+  --primary: #00d9ff;
+  --primary-foreground: #0f1419;
+  --sidebar-primary: #00d9ff;
+  --sidebar-primary-foreground: #0f1419;
+  --chart-1: #00d9ff;
+  --chart-2: #00b8cc;
+  --chart-3: #0099aa;
+  --chart-4: #007a88;
+  --chart-5: #005b66;
+  
+  --radius: 0.5rem;
+  
+  /* Dark Theme - AETHER Operational */
+  --background: #0f1419;
+  --foreground: #e8eef5;
+  --card: #1a1f2e;
+  --card-foreground: #e8eef5;
+  --popover: #1a1f2e;
+  --popover-foreground: #e8eef5;
+  --secondary: #2a3142;
+  --secondary-foreground: #b8c5d6;
+  --muted: #3a4555;
+  --muted-foreground: #8a97aa;
+  --accent: #00d9ff;
+  --accent-foreground: #0f1419;
+  --destructive: #ff3b3b;
+  --destructive-foreground: #fff5f5;
+  --border: rgba(0, 217, 255, 0.15);
+  --input: rgba(26, 31, 46, 0.8);
+  --ring: #00d9ff;
+  --sidebar: #1a1f2e;
+  --sidebar-foreground: #e8eef5;
+  --sidebar-accent: #00d9ff;
+  --sidebar-accent-foreground: #0f1419;
+  --sidebar-border: rgba(0, 217, 255, 0.1);
+  --sidebar-ring: #00d9ff;
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', sans-serif;
+  }
+  button:not(:disabled),
+  [role="button"]:not([aria-disabled="true"]),
+  [type="button"]:not(:disabled),
+  [type="submit"]:not(:disabled),
+  [type="reset"]:not(:disabled),
+  a[href],
+  select:not(:disabled),
+  input[type="checkbox"]:not(:disabled),
+  input[type="radio"]:not(:disabled) {
+    @apply cursor-pointer;
+  }
+  
+  /* AETHER Typography System */
+  h1 {
+    @apply text-4xl font-bold tracking-tight;
+    font-family: 'IBM Plex Mono', monospace;
+    letter-spacing: 0.02em;
+  }
+  
+  h2 {
+    @apply text-2xl font-bold tracking-tight;
+    font-family: 'IBM Plex Mono', monospace;
+    letter-spacing: 0.015em;
+  }
+  
+  h3 {
+    @apply text-lg font-semibold;
+    font-family: 'IBM Plex Mono', monospace;
+    letter-spacing: 0.01em;
+  }
+  
+  /* Metric labels - uppercase, technical */
+  .metric-label {
+    @apply text-xs font-semibold uppercase tracking-widest text-muted-foreground;
+  }
+  
+  /* Metric values - technical font, large */
+  .metric-value {
+    @apply text-3xl font-bold;
+    font-family: 'IBM Plex Mono', monospace;
+  }
+}
+
+@layer components {
+  /* Custom container utility */
+  .container {
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+
+  .flex {
+    min-height: 0;
+    min-width: 0;
+  }
+
+  @media (min-width: 640px) {
+    .container {
+      padding-left: 1.5rem;
+      padding-right: 1.5rem;
+    }
+  }
+
+  @media (min-width: 1024px) {
+    .container {
+      padding-left: 2rem;
+      padding-right: 2rem;
+      max-width: 1280px;
+    }
+  }
+  
+  /* AETHER Glass Panel - Premium frosted effect */
+  .glass-panel {
+    @apply rounded-lg border backdrop-blur-xl;
+    background: rgba(26, 31, 46, 0.6);
+    border-color: rgba(0, 217, 255, 0.15);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  }
+  
+  .glass-panel-hover {
+    @apply transition-all duration-300;
+  }
+  
+  .glass-panel-hover:hover {
+    background: rgba(26, 31, 46, 0.8);
+    border-color: rgba(0, 217, 255, 0.25);
+    box-shadow: 0 12px 48px rgba(0, 217, 255, 0.1);
+  }
+  
+  /* AETHER Status Badge */
+  .status-badge {
+    @apply inline-flex items-center gap-2 px-3 py-1 rounded-full text-xs font-semibold uppercase tracking-wider;
+  }
+  
+  .status-operational {
+    @apply bg-emerald-500/20 text-emerald-300 border border-emerald-500/30;
+  }
+  
+  .status-warning {
+    @apply bg-amber-500/20 text-amber-300 border border-amber-500/30;
+  }
+  
+  .status-critical {
+    @apply bg-red-500/20 text-red-300 border border-red-500/30;
+  }
+  
+  /* AETHER Threat Indicator Pulse */
+  .pulse-threat {
+    animation: threat-pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  }
+  
+  @keyframes threat-pulse {
+    0%, 100% {
+      opacity: 1;
+    }
+    50% {
+      opacity: 0.7;
+    }
+  }
+  
+  /* AETHER Data Chart Container */
+  .chart-container {
+    @apply p-6;
+    min-height: 300px;
+  }
+  
+  /* AETHER Accent Line */
+  .accent-line {
+    @apply h-0.5 bg-gradient-to-r from-accent via-accent to-transparent;
+  }
+  
+  /* AETHER Section Divider */
+  .section-divider {
+    @apply border-t border-border my-6;
+  }
+}
+
+/* Smooth scrollbar for charts and data */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(26, 31, 46, 0.4);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 217, 255, 0.3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 217, 255, 0.5);
+}
